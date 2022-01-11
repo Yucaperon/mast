@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Hello</title>
+<link href="/css/list.css" rel="stylesheet"></link>
+<meta charset="utf-8" />
+</head>
+<body>
+    <h1>ユーザー情報一覧</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>名前</th>
+                <th>パスワード</th>
+                <th>性別</th>
+                <th>年齢</th>
+                <th>職業</th>
+                <th>メアド</th>
+                <th>自己紹介</th>
+                <th>好きなジャンル</th>
+                <th>登録日時</th>
+                <th>ゲームパス</th>
+                <th>ログイン状況</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="user_tbl : ${userlist}" th:object="${user_tbl}">
+                <td class="center" th:text="*{USER_ID}"></td>
+                <td class="center" th:text="*{USER_NAME}"></td>
+                <td class="center" th:text="*{USER_PASS}"></td>
+                <td class="center" th:text="*{USER_SEX}"></td>
+                <td class="center" th:text="*{USER_AGE}"></td>
+                <td class="center" th:text="*{USER_JOB}"></td>
+                <td class="center" th:text="*{USER_EMAIL}"></td>
+                <td class="center" th:text="*{USER_PROFILE}"></td>
+                <td class="center" th:text="*{USER_FAV}"></td>
+                <td class="center" th:text="${#dates.format(user_tbl.USER_ENTRY, 'yyyy/MM/dd')}"></td>
+                <td class="center" th:text="*{USER_GAME_ADDRESS}"></td>
+                <td class="center" th:text="*{USER_LOGIN}"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
